@@ -195,8 +195,24 @@ function initApp() {
     indicator.innerHTML = "";
   }
 
+  let lastGardenStatus = null; 
   db.ref("Garden_status").on("value", snap => {
-    if (snap.val() === 1) startDrops(); else stopDrops();
+    const current = snap.val();
+    if (lastGardenStatus === null) {
+      lastGardenStatus = current;
+      return;
+    }
+
+    if (current !== lastGardenStatus) {
+      if (current === 1) {
+        startDrops();
+        speak("Начался полив растений");
+      } else {
+        stopDrops();
+        speak("Полив растений остановлен");
+      }
+    }
+    lastGardenStatus = current;
   });
 
 }
