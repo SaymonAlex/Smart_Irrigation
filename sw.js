@@ -1,4 +1,4 @@
-const CACHE_NAME = 'esp-ui-v1';
+const CACHE_NAME = 'esp-ui-v3';
 
 const FILES_TO_CACHE = [
   './',
@@ -30,4 +30,13 @@ self.addEventListener('activate', e => {
     )
   );
   self.clients.claim();
+});
+
+// 🔥 главное
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(res => {
+      return res || fetch(e.request);
+    })
+  );
 });

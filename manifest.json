@@ -1,11 +1,19 @@
 {
+  "id": "/esp-smart-irigation",
   "name": "ESP Irigation PWA",
   "short_name": "Smart Полив",
+  "description": "Веб-интерфейс управления поливом",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#0b1220",
   "theme_color": "#113156",
+  "lang": "ru",
+  "categories": [
+    "smart-irigation",
+    "iot"
+  ],
   "icons": [
     {
       "src": "./icons/icon-192.png",
